@@ -1,0 +1,437 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug-D3D12|x64">
+      <Configuration>Debug-D3D12</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug-D3D11|x64">
+      <Configuration>Debug-D3D11</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-D3D12|x64">
+      <Configuration>Release-D3D12</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-D3D11|x64">
+      <Configuration>Release-D3D11</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\lib\nv_vr.h" />
+    <ClInclude Include="..\..\product_version.h" />
+    <ClInclude Include="..\common\jsoncpp\lib_json\json_batchallocator.h" />
+    <ClInclude Include="BindingHelpers.h" />
+    <ClInclude Include="DeviceManager11.h" />
+    <ClInclude Include="DeviceManager12.h" />
+    <ClInclude Include="framework\camera.h" />
+    <ClInclude Include="GFSDK_NVRHI.h" />
+    <ClInclude Include="GFSDK_NVRHI_D3D11.h" />
+    <ClInclude Include="GFSDK_NVRHI_D3D12.h" />
+    <ClInclude Include="ShaderFactory.h" />
+    <ClInclude Include="ShaderState.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\lib\nv_lens_matched_shading.cpp" />
+    <ClCompile Include="..\..\lib\nv_multi_res.cpp" />
+    <ClCompile Include="..\..\lib\nv_planar.cpp" />
+    <ClCompile Include="..\common\jsoncpp\lib_json\json_reader.cpp" />
+    <ClCompile Include="..\common\jsoncpp\lib_json\json_value.cpp" />
+    <ClCompile Include="..\common\jsoncpp\lib_json\json_writer.cpp" />
+    <ClCompile Include="DeviceManager11.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-D3D12|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-D3D12|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="DeviceManager12.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-D3D11|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-D3D11|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="framework\camera.cpp" />
+    <ClCompile Include="GFSDK_NVRHI_D3D11.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-D3D12|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-D3D12|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GFSDK_NVRHI_D3D12.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-D3D11|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-D3D11|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="ShaderFactory.cpp" />
+    <ClCompile Include="ShaderState.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\lib\nv_vr.hlsli" />
+    <None Include="..\..\lib\nv_vr_geometry_shader.hlsli" />
+    <None Include="..\common\jsoncpp\lib_json\json_internalarray.inl" />
+    <None Include="..\common\jsoncpp\lib_json\json_internalmap.inl" />
+    <None Include="..\common\jsoncpp\lib_json\json_valueiterator.inl" />
+    <None Include="shaders\lighting.hlsli" />
+    <None Include="shaders\world_gs.hlsl" />
+    <None Include="shaders\ao_ps.hlsl" />
+    <None Include="shaders\safezone_gs.hlsl" />
+    <None Include="shaders\safezone_vs.hlsl" />
+    <None Include="shaders\taa_cs.hlsl" />
+    <None Include="shaders\shadow_alphatest_ps.hlsl" />
+    <None Include="shaders\simple_ps.hlsl" />
+    <None Include="shaders\flatten_ps.hlsl" />
+    <None Include="shaders\world_vs.hlsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Scene.h" />
+    <CustomBuild Include="shaders\shader-slots.h" />
+    <CustomBuild Include="shaders\shader-common.hlsli" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="demo_nvrhi.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{22DEB6BF-A11E-4E8D-A755-C945C623F830}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>demo_dx11</RootNamespace>
+    <ProjectName>demo_nvrhi</ProjectName>
+    <WindowsTargetPlatformVersion>10.0.10586.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-D3D11|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-D3D12|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-D3D11|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-D3D12|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug-D3D11|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug-D3D12|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release-D3D11|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release-D3D12|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-D3D11|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>bin\</OutDir>
+    <IntDir>temp\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_dx11_debug</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-D3D12|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>bin\</OutDir>
+    <IntDir>temp\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_dx12_debug</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-D3D11|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>bin\</OutDir>
+    <IntDir>temp\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_dx11</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-D3D12|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>bin\</OutDir>
+    <IntDir>temp\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_dx12</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-D3D11|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>USE_D3D11=1;WIN32;_DEBUG;_WINDOWS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\lib;framework;..\common;..\common\util;..\common\jsoncpp;..\common\FreeImage;..\common\assimp\include;..\common\AntTweakBar\include;..\common\LibOVR\Include;..\common\OpenVR\headers;..\..\nvapi;$(IntDir)shaders</AdditionalIncludeDirectories>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <AdditionalOptions>/d2Zi+</AdditionalOptions>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>shlwapi.lib;kernel32.lib;user32.lib;dxgi.lib;d3d11.lib;xinput9_1_0.lib;AntTweakBar64.lib;assimp.lib;FreeImage.lib;openvr_api.lib;nvapi64.lib;LibOVR.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\common\FreeImage\x64;..\common\assimp\lib\assimp_release-dll_x64;..\common\AntTweakBar\lib;..\common\OpenVR\lib\win64;..\..\nvapi\amd64;..\common\LibOVR\Lib\VS2015</AdditionalLibraryDirectories>
+    </Link>
+    <FxCompile>
+      <ShaderModel>5.0</ShaderModel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <VariableName>%(Filename)_bytecode</VariableName>
+      <HeaderFileOutput>vs2015\$(Platform)\$(Configuration)\shaders\%(Filename).h</HeaderFileOutput>
+      <ObjectFileOutput />
+      <AdditionalOptions>/Gfp</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..</AdditionalIncludeDirectories>
+      <DisableOptimizations>false</DisableOptimizations>
+    </FxCompile>
+    <CustomBuildStep>
+      <Command>copy /y "$(ProjectDir)..\common\AntTweakBar\lib\AntTweakBar64.dll" "$(OutDir)"
+copy /y "$(ProjectDir)..\common\OpenVR\bin\win64\openvr_api.dll" "$(OutDir)"
+copy /y "$(ProjectDir)..\common\assimp\lib\assimp_release-dll_x64\assimp.dll" "$(OutDir)"
+copy /y "$(ProjectDir)..\common\FreeImage\x64\FreeImage.dll" "$(OutDir)"</Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message>Copying .dlls to output directory</Message>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Outputs>$(OutDir)AntTweakBar64.dll;$(OutDir)openvr_api.dll</Outputs>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Inputs>$(ProjectDir)..\common\AntTweakBar\lib\AntTweakBar64.dll;$(ProjectDir)..\common\OpenVR\bin\win64\openvr_api.dll</Inputs>
+    </CustomBuildStep>
+    <Manifest>
+      <EnableDpiAwareness>true</EnableDpiAwareness>
+    </Manifest>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-D3D12|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>USE_D3D12=1;WIN32;_DEBUG;_WINDOWS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\lib;framework;..\common;..\common\util;..\common\jsoncpp;..\common\FreeImage;..\common\assimp\include;..\common\AntTweakBar\include;..\common\LibOVR\Include;..\common\OpenVR\headers;..\..\nvapi;$(IntDir)shaders</AdditionalIncludeDirectories>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <AdditionalOptions>/d2Zi+</AdditionalOptions>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>shlwapi.lib;kernel32.lib;user32.lib;dxgi.lib;d3d11.lib;xinput9_1_0.lib;AntTweakBar64.lib;assimp.lib;FreeImage.lib;openvr_api.lib;nvapi64.lib;LibOVR.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\common\FreeImage\x64;..\common\assimp\lib\assimp_release-dll_x64;..\common\AntTweakBar\lib;..\common\OpenVR\lib\win64;..\..\nvapi\amd64;..\common\LibOVR\Lib\VS2015</AdditionalLibraryDirectories>
+    </Link>
+    <FxCompile>
+      <ShaderModel>5.0</ShaderModel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <VariableName>%(Filename)_bytecode</VariableName>
+      <HeaderFileOutput>vs2015\$(Platform)\$(Configuration)\shaders\%(Filename).h</HeaderFileOutput>
+      <ObjectFileOutput>
+      </ObjectFileOutput>
+      <AdditionalOptions>/Gfp</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..</AdditionalIncludeDirectories>
+      <DisableOptimizations>false</DisableOptimizations>
+    </FxCompile>
+    <CustomBuildStep>
+      <Command>copy /y "$(ProjectDir)..\common\AntTweakBar\lib\AntTweakBar64.dll" "$(OutDir)"
+copy /y "$(ProjectDir)..\common\OpenVR\bin\win64\openvr_api.dll" "$(OutDir)"
+copy /y "$(ProjectDir)..\common\assimp\lib\assimp_release-dll_x64\assimp.dll" "$(OutDir)"
+copy /y "$(ProjectDir)..\common\FreeImage\x64\FreeImage.dll" "$(OutDir)"</Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message>Copying .dlls to output directory</Message>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Outputs>$(OutDir)AntTweakBar64.dll;$(OutDir)openvr_api.dll</Outputs>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Inputs>$(ProjectDir)..\common\AntTweakBar\lib\AntTweakBar64.dll;$(ProjectDir)..\common\OpenVR\bin\win64\openvr_api.dll</Inputs>
+    </CustomBuildStep>
+    <Manifest>
+      <EnableDpiAwareness>true</EnableDpiAwareness>
+    </Manifest>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-D3D11|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>USE_D3D11=1;WIN32;NDEBUG;_WINDOWS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\lib;framework;..\common;..\common\util;..\common\jsoncpp;..\common\FreeImage;..\common\assimp\include;..\common\AntTweakBar\include;..\common\LibOVR\Include;..\common\OpenVR\headers;..\..\nvapi;$(IntDir)shaders</AdditionalIncludeDirectories>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <AdditionalOptions>/d2Zi+</AdditionalOptions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>shlwapi.lib;kernel32.lib;user32.lib;dxgi.lib;d3d11.lib;xinput9_1_0.lib;AntTweakBar64.lib;assimp.lib;FreeImage.lib;openvr_api.lib;nvapi64.lib;LibOVR.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\common\FreeImage\x64;..\common\assimp\lib\assimp_release-dll_x64;..\common\AntTweakBar\lib;..\common\OpenVR\lib\win64;..\..\nvapi\amd64;..\common\LibOVR\Lib\VS2015</AdditionalLibraryDirectories>
+    </Link>
+    <FxCompile>
+      <DisableOptimizations>false</DisableOptimizations>
+    </FxCompile>
+    <FxCompile>
+      <EnableDebuggingInformation>true</EnableDebuggingInformation>
+    </FxCompile>
+    <FxCompile>
+      <ShaderModel>5.0</ShaderModel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <VariableName>%(Filename)_bytecode</VariableName>
+      <HeaderFileOutput>vs2015\$(Platform)\$(Configuration)\shaders\%(Filename).h</HeaderFileOutput>
+      <ObjectFileOutput />
+      <AdditionalOptions>/Gfp</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..</AdditionalIncludeDirectories>
+    </FxCompile>
+    <CustomBuildStep>
+      <Command>copy /y "$(ProjectDir)..\common\AntTweakBar\lib\AntTweakBar64.dll" "$(OutDir)"
+copy /y "$(ProjectDir)..\common\OpenVR\bin\win64\openvr_api.dll" "$(OutDir)"
+copy /y "$(ProjectDir)..\common\assimp\lib\assimp_release-dll_x64\assimp.dll" "$(OutDir)"
+copy /y "$(ProjectDir)..\common\FreeImage\x64\FreeImage.dll" "$(OutDir)"</Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message>Copying .dlls to output directory</Message>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Outputs>$(OutDir)AntTweakBar64.dll;$(OutDir)openvr_api.dll</Outputs>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Inputs>$(ProjectDir)..\common\AntTweakBar\lib\AntTweakBar64.dll;$(ProjectDir)..\common\OpenVR\bin\win64\openvr_api.dll</Inputs>
+    </CustomBuildStep>
+    <Manifest>
+      <EnableDpiAwareness>true</EnableDpiAwareness>
+    </Manifest>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-D3D12|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>USE_D3D12=1;WIN32;NDEBUG;_WINDOWS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\lib;framework;..\common;..\common\util;..\common\jsoncpp;..\common\FreeImage;..\common\assimp\include;..\common\AntTweakBar\include;..\common\LibOVR\Include;..\common\OpenVR\headers;..\..\nvapi;$(IntDir)shaders</AdditionalIncludeDirectories>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <AdditionalOptions>/d2Zi+</AdditionalOptions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>shlwapi.lib;kernel32.lib;user32.lib;dxgi.lib;d3d11.lib;xinput9_1_0.lib;AntTweakBar64.lib;assimp.lib;FreeImage.lib;openvr_api.lib;nvapi64.lib;LibOVR.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\common\FreeImage\x64;..\common\assimp\lib\assimp_release-dll_x64;..\common\AntTweakBar\lib;..\common\OpenVR\lib\win64;..\..\nvapi\amd64;..\common\LibOVR\Lib\VS2015</AdditionalLibraryDirectories>
+    </Link>
+    <FxCompile>
+      <DisableOptimizations>false</DisableOptimizations>
+    </FxCompile>
+    <FxCompile>
+      <EnableDebuggingInformation>true</EnableDebuggingInformation>
+    </FxCompile>
+    <FxCompile>
+      <ShaderModel>5.0</ShaderModel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <VariableName>%(Filename)_bytecode</VariableName>
+      <HeaderFileOutput>vs2015\$(Platform)\$(Configuration)\shaders\%(Filename).h</HeaderFileOutput>
+      <ObjectFileOutput>
+      </ObjectFileOutput>
+      <AdditionalOptions>/Gfp</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..</AdditionalIncludeDirectories>
+    </FxCompile>
+    <CustomBuildStep>
+      <Command>copy /y "$(ProjectDir)..\common\AntTweakBar\lib\AntTweakBar64.dll" "$(OutDir)"
+copy /y "$(ProjectDir)..\common\OpenVR\bin\win64\openvr_api.dll" "$(OutDir)"
+copy /y "$(ProjectDir)..\common\assimp\lib\assimp_release-dll_x64\assimp.dll" "$(OutDir)"
+copy /y "$(ProjectDir)..\common\FreeImage\x64\FreeImage.dll" "$(OutDir)"</Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message>Copying .dlls to output directory</Message>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Outputs>$(OutDir)AntTweakBar64.dll;$(OutDir)openvr_api.dll</Outputs>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Inputs>$(ProjectDir)..\common\AntTweakBar\lib\AntTweakBar64.dll;$(ProjectDir)..\common\OpenVR\bin\win64\openvr_api.dll</Inputs>
+    </CustomBuildStep>
+    <Manifest>
+      <EnableDpiAwareness>true</EnableDpiAwareness>
+    </Manifest>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\common\util\util.vs2015.vcxproj">
+      <Project>{059adadd-603c-4508-b2c6-8b0ba87ba4c9}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\blit_ps.hlsl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="shaders\fullscreen_vs.hlsl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="shaders\lines_ps.hlsl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="shaders\lines_vs.hlsl">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="demo_dx12.rc">
+      <PreprocessorDefinitions>TARGET_NAME=\"$(TargetName).exe\";_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

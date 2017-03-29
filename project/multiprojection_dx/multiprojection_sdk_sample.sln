@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "demo_dx11", "demo\dx11\demo_dx11.vs2015.vcxproj", "{5729189D-A329-4507-9E64-C3C72C4C379A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "util", "demo\common\util\util.vs2015.vcxproj", "{059ADADD-603C-4508-B2C6-8B0BA87BA4C9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "demo_nvrhi", "demo\dx12\demo_dx12.vs2015.vcxproj", "{22DEB6BF-A11E-4E8D-A755-C945C623F830}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug-D3D11|x64 = Debug-D3D11|x64
+		Debug-D3D12|x64 = Debug-D3D12|x64
+		Release-D3D11|x64 = Release-D3D11|x64
+		Release-D3D12|x64 = Release-D3D12|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5729189D-A329-4507-9E64-C3C72C4C379A}.Debug-D3D11|x64.ActiveCfg = Debug|x64
+		{5729189D-A329-4507-9E64-C3C72C4C379A}.Debug-D3D11|x64.Build.0 = Debug|x64
+		{5729189D-A329-4507-9E64-C3C72C4C379A}.Debug-D3D12|x64.ActiveCfg = Debug|x64
+		{5729189D-A329-4507-9E64-C3C72C4C379A}.Release-D3D11|x64.ActiveCfg = Release|x64
+		{5729189D-A329-4507-9E64-C3C72C4C379A}.Release-D3D11|x64.Build.0 = Release|x64
+		{5729189D-A329-4507-9E64-C3C72C4C379A}.Release-D3D12|x64.ActiveCfg = Release|x64
+		{059ADADD-603C-4508-B2C6-8B0BA87BA4C9}.Debug-D3D11|x64.ActiveCfg = Debug|x64
+		{059ADADD-603C-4508-B2C6-8B0BA87BA4C9}.Debug-D3D11|x64.Build.0 = Debug|x64
+		{059ADADD-603C-4508-B2C6-8B0BA87BA4C9}.Debug-D3D12|x64.ActiveCfg = Debug|x64
+		{059ADADD-603C-4508-B2C6-8B0BA87BA4C9}.Debug-D3D12|x64.Build.0 = Debug|x64
+		{059ADADD-603C-4508-B2C6-8B0BA87BA4C9}.Release-D3D11|x64.ActiveCfg = Release|x64
+		{059ADADD-603C-4508-B2C6-8B0BA87BA4C9}.Release-D3D11|x64.Build.0 = Release|x64
+		{059ADADD-603C-4508-B2C6-8B0BA87BA4C9}.Release-D3D12|x64.ActiveCfg = Release|x64
+		{059ADADD-603C-4508-B2C6-8B0BA87BA4C9}.Release-D3D12|x64.Build.0 = Release|x64
+		{22DEB6BF-A11E-4E8D-A755-C945C623F830}.Debug-D3D11|x64.ActiveCfg = Debug-D3D11|x64
+		{22DEB6BF-A11E-4E8D-A755-C945C623F830}.Debug-D3D11|x64.Build.0 = Debug-D3D11|x64
+		{22DEB6BF-A11E-4E8D-A755-C945C623F830}.Debug-D3D12|x64.ActiveCfg = Debug-D3D12|x64
+		{22DEB6BF-A11E-4E8D-A755-C945C623F830}.Debug-D3D12|x64.Build.0 = Debug-D3D12|x64
+		{22DEB6BF-A11E-4E8D-A755-C945C623F830}.Release-D3D11|x64.ActiveCfg = Release-D3D11|x64
+		{22DEB6BF-A11E-4E8D-A755-C945C623F830}.Release-D3D11|x64.Build.0 = Release-D3D11|x64
+		{22DEB6BF-A11E-4E8D-A755-C945C623F830}.Release-D3D12|x64.ActiveCfg = Release-D3D12|x64
+		{22DEB6BF-A11E-4E8D-A755-C945C623F830}.Release-D3D12|x64.Build.0 = Release-D3D12|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

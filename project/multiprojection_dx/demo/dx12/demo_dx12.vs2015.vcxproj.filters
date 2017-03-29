@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="framework\camera.cpp">
+      <Filter>Framework\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="demo_nvrhi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\nv_lens_matched_shading.cpp">
+      <Filter>VR SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\nv_multi_res.cpp">
+      <Filter>VR SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\nv_planar.cpp">
+      <Filter>VR SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\jsoncpp\lib_json\json_reader.cpp">
+      <Filter>jsoncpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\jsoncpp\lib_json\json_value.cpp">
+      <Filter>jsoncpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\jsoncpp\lib_json\json_writer.cpp">
+      <Filter>jsoncpp</Filter>
+    </ClCompile>
+    <ClCompile Include="DeviceManager11.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GFSDK_NVRHI_D3D11.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DeviceManager12.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GFSDK_NVRHI_D3D12.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework\camera.h">
+      <Filter>Framework\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderFactory.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderState.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\nv_vr.h">
+      <Filter>VR SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\jsoncpp\lib_json\json_batchallocator.h">
+      <Filter>jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceManager11.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GFSDK_NVRHI.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GFSDK_NVRHI_D3D11.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BindingHelpers.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceManager12.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GFSDK_NVRHI_D3D12.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\product_version.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{a2df3c06-6937-4a27-8bf2-e9756a02e4f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Source Files">
+      <UniqueIdentifier>{4f2b3c1f-de4f-418d-967b-e29caababd5c}</UniqueIdentifier>
+      <Extensions>*.c;*.cpp</Extensions>
+    </Filter>
+    <Filter Include="Framework\Shader Files">
+      <UniqueIdentifier>{c92a795e-bc2b-4598-8299-88a9533b8827}</UniqueIdentifier>
+      <Extensions>*.hlsl</Extensions>
+    </Filter>
+    <Filter Include="Framework\Header Files">
+      <UniqueIdentifier>{b34e806c-a1f4-4c89-8d50-61666202d50f}</UniqueIdentifier>
+      <Extensions>*.h</Extensions>
+    </Filter>
+    <Filter Include="Shader Files">
+      <UniqueIdentifier>{33aa50d8-96d8-46de-8c5b-377bacfb32ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4ef2eb3e-9802-4288-84cb-dfe0edf9a77f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VR SDK">
+      <UniqueIdentifier>{ac04b82b-127c-4ea7-aab1-ceb36e5a652f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader Files\VS">
+      <UniqueIdentifier>{dfc959f1-3029-47bf-bf28-306777f91fa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader Files\PS">
+      <UniqueIdentifier>{6cfcce14-7e42-48df-8666-b1b10c143e9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader Files\GS">
+      <UniqueIdentifier>{ac0a0bc1-40a6-4da0-83f6-ba4455475291}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader Files\CS">
+      <UniqueIdentifier>{1e7b1483-f03b-4a5d-a98e-20477c7e7f94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="jsoncpp">
+      <UniqueIdentifier>{d13a340b-7143-46a5-93ba-1329cac3df8b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="shaders\shader-common.hlsli">
+      <Filter>Shader Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shaders\shader-slots.h">
+      <Filter>Shader Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\lib\nv_vr.hlsli">
+      <Filter>VR SDK</Filter>
+    </None>
+    <None Include="..\..\lib\nv_vr_geometry_shader.hlsli">
+      <Filter>VR SDK</Filter>
+    </None>
+    <None Include="shaders\ao_ps.hlsl">
+      <Filter>Shader Files\PS</Filter>
+    </None>
+    <None Include="shaders\flatten_ps.hlsl">
+      <Filter>Shader Files\PS</Filter>
+    </None>
+    <None Include="shaders\simple_ps.hlsl">
+      <Filter>Shader Files\PS</Filter>
+    </None>
+    <None Include="shaders\lighting.hlsli">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="shaders\safezone_gs.hlsl">
+      <Filter>Shader Files\GS</Filter>
+    </None>
+    <None Include="shaders\world_gs.hlsl">
+      <Filter>Shader Files\GS</Filter>
+    </None>
+    <None Include="shaders\safezone_vs.hlsl">
+      <Filter>Shader Files\VS</Filter>
+    </None>
+    <None Include="shaders\world_vs.hlsl">
+      <Filter>Shader Files\VS</Filter>
+    </None>
+    <None Include="shaders\shadow_alphatest_ps.hlsl">
+      <Filter>Shader Files\PS</Filter>
+    </None>
+    <None Include="shaders\taa_cs.hlsl">
+      <Filter>Shader Files\CS</Filter>
+    </None>
+    <None Include="..\common\jsoncpp\lib_json\json_internalarray.inl">
+      <Filter>jsoncpp</Filter>
+    </None>
+    <None Include="..\common\jsoncpp\lib_json\json_internalmap.inl">
+      <Filter>jsoncpp</Filter>
+    </None>
+    <None Include="..\common\jsoncpp\lib_json\json_valueiterator.inl">
+      <Filter>jsoncpp</Filter>
+    </None>
+    <None Include="shaders\blit_ps.hlsl">
+      <Filter>Shader Files\PS</Filter>
+    </None>
+    <None Include="shaders\lines_ps.hlsl">
+      <Filter>Shader Files\PS</Filter>
+    </None>
+    <None Include="shaders\fullscreen_vs.hlsl">
+      <Filter>Shader Files\VS</Filter>
+    </None>
+    <None Include="shaders\lines_vs.hlsl">
+      <Filter>Shader Files\VS</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="demo_dx12.rc" />
+  </ItemGroup>
+</Project>
