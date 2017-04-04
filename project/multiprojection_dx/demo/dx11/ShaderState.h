@@ -70,6 +70,7 @@ public:
 			unsigned int featureLevel : 2;
 			unsigned int msaaSampleCount : 4;
 			unsigned int temporalAA : 1;
+			unsigned int computeMSAA : 1;
 		};
 
 		unsigned int value;
@@ -95,6 +96,7 @@ public:
 	
 	// Compute Shaders
 	comptr<ID3D11ComputeShader>			m_pCsTemporalAA;
+	comptr<ID3D11ComputeShader>         m_pCsMSAA;
 
 	// Other stuff
 	comptr<ID3D11InputLayout>			m_pInputLayout;

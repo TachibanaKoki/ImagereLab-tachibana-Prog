@@ -133,6 +133,15 @@ ShaderState::ShaderState(ShaderFactory* pFactory, Effect effect)
 		pFactory->CreateComputeShader("taa_cs", &Macros, &m_pCsTemporalAA);
 	}
 
+	if (effect.computeMSAA)
+	{
+		std::vector<shaderMacro> Macros;
+		Macros.push_back(shaderMacro{ "SAMPLE_COUNT", numberStrings[effect.msaaSampleCount] });
+		Macros.push_back(shaderMacro{ "NV_VR_PROJECTION", projectionStrings[int(effect.projection)] });
+
+		pFactory->CreateComputeShader("CompShader", &Macros, &m_pCsMSAA);
+	}
+
 	pFactory->CreateVertexShader("world_vs", nullptr, &m_pVsShadow);
 
 	{

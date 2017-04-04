@@ -108,6 +108,7 @@ int							g_repeatRenderingCount		= 1;
 int 						g_msaaSampleCount			= 1;
 bool						g_enableSSAO				= true;
 bool						g_temporalAA				= true;
+bool						g_computeMSAA				= true;
 bool						g_suppressTemporalAA		= false;
 int							g_sceneIndex				= 0;
 std::string					g_sceneName					= "sponza.json";
@@ -600,6 +601,8 @@ void VRWorksSample::VerifyShaders()
 	effect.featureLevel = uint(g_featureLevel);
 	effect.msaaSampleCount = g_msaaSampleCount;
 	effect.temporalAA = g_temporalAA;
+	effect.computeMSAA = g_computeMSAA;
+
 
 	if (!m_pShaderState || effect.value != m_pShaderState->m_Effect.value)
 	{
@@ -749,6 +752,7 @@ void VRWorksSample::InitUI()
 	TwAddVarRW(pTwBarRendering, "SSAO", TW_TYPE_BOOLCPP, &g_enableSSAO, "");
 
 	TwAddVarRW(pTwBarRendering, "Temporal AA", TW_TYPE_BOOLCPP, &g_temporalAA, "");
+	TwAddVarRW(pTwBarRendering, "Compute MSAA", TW_TYPE_BOOLCPP, &g_computeMSAA, "");
 
 	TwAddVarRW(pTwBarRendering, "Frustum Culling", TW_TYPE_BOOLCPP, &g_frustumCulling, "");
 
@@ -1964,7 +1968,8 @@ void VRWorksSample::RenderScene()
 		pSRVs[2] = m_rtScenePrev.m_pSrv;
 		m_pCtx->CSSetShaderResources(0, dim(pSRVs), pSRVs);
 
-		m_pCtx->CSSetShader(m_pShaderState->m_pCsTemporalAA, nullptr, 0);
+		//m_pCtx->CSSetShader(m_pShaderState->m_pCsTemporalAA, nullptr, 0);
+		m_pCtx->CSSetShader(m_pShaderState->m_pCsMSAA, nullptr, 0);
 		m_pCtx->CSSetSamplers(0, 1, &m_pSsBilinearClamp);
 
 		if (IsVROrFakeVRActive() && (g_lensMatchedShadingEnabled || g_multiResEnabled))
