@@ -107,7 +107,6 @@ bool						g_vsync						= false;
 int							g_repeatRenderingCount		= 1;
 int 						g_msaaSampleCount			= 1;
 bool						g_enableSSAO				= true;
-bool						g_temporalAA				= true;
 bool						g_computeMSAA				= true;
 bool						g_suppressTemporalAA		= false;
 int							g_sceneIndex				= 0;
@@ -600,7 +599,6 @@ void VRWorksSample::VerifyShaders()
 	effect.stereoMode = uint(g_stereoMode);
 	effect.featureLevel = uint(g_featureLevel);
 	effect.msaaSampleCount = g_msaaSampleCount;
-	effect.temporalAA = g_temporalAA;
 	effect.computeMSAA = g_computeMSAA;
 
 
@@ -751,8 +749,7 @@ void VRWorksSample::InitUI()
 
 	TwAddVarRW(pTwBarRendering, "SSAO", TW_TYPE_BOOLCPP, &g_enableSSAO, "");
 
-	TwAddVarRW(pTwBarRendering, "Temporal AA", TW_TYPE_BOOLCPP, &g_temporalAA, "");
-	TwAddVarRW(pTwBarRendering, "Compute MSAA", TW_TYPE_BOOLCPP, &g_computeMSAA, "");
+	TwAddVarRW(pTwBarRendering, "ComputeMSAA", TW_TYPE_BOOLCPP, &g_computeMSAA, "");
 
 	TwAddVarRW(pTwBarRendering, "Frustum Culling", TW_TYPE_BOOLCPP, &g_frustumCulling, "");
 
@@ -1177,8 +1174,8 @@ void VRWorksSample::VerifyRenderTargetDims()
 
 	int samples = g_msaaSampleCount;
 	DXGI_FORMAT depthFormat = DXGI_FORMAT_D32_FLOAT;
-	DXGI_FORMAT rtSceneFormat = g_temporalAA ? DXGI_FORMAT_R16G16B16A16_FLOAT : DXGI_FORMAT_R8G8B8A8_UNORM_SRGB;
-	RTFLAG rtSceneFlag = g_temporalAA ? RTFLAG_EnableUAV : RTFLAG_Default;
+	DXGI_FORMAT rtSceneFormat = g_computeMSAA ? DXGI_FORMAT_R16G16B16A16_FLOAT : DXGI_FORMAT_R8G8B8A8_UNORM_SRGB;
+	RTFLAG rtSceneFlag = g_computeMSAA ? RTFLAG_EnableUAV : RTFLAG_Default;
 
 	if (all(requiredSceneSize == m_rtSceneMSAA.m_dims) &&
 		all(requiredUpscaledSize == m_rtUpscaled.m_dims) &&
@@ -1690,7 +1687,7 @@ void VRWorksSample::RenderScene()
 	CalculateProjectionMatrices();
 
 	float2 taaViewportOffset = makefloat2(0.f);
-	if (g_temporalAA)
+	if (g_computeMSAA)
 	{
 		RenderTarget tmp = m_rtScene;
 		m_rtScene = m_rtScenePrev;
@@ -1729,7 +1726,7 @@ void VRWorksSample::RenderScene()
 	cbFrame.m_screenSize = makefloat4(float(m_rtScene.m_dims.x), float(m_rtScene.m_dims.y), 1.0f / float(m_rtScene.m_dims.x), 1.0f / float(m_rtScene.m_dims.y));
 	cbFrame.m_temporalAAClampingFactor = 1.0f;
 	cbFrame.m_temporalAANewFrameWeight = g_suppressTemporalAA ? 1.f : 0.1f;
-	cbFrame.m_textureLodBias = g_temporalAA ? -0.5f : 0.f;
+	cbFrame.m_textureLodBias = g_computeMSAA ? -0.5f : 0.f;
 	cbFrame.m_randomOffset = makefloat2(float(rand()), float(rand()));
 
 	m_cbFrame.Bind(m_pCtx, CB_FRAME);
@@ -1747,7 +1744,7 @@ void VRWorksSample::RenderScene()
 	m_pCtx->ClearRenderTargetView(m_rtSceneMSAA.m_pRtv, makergba(0.f));
 	m_pCtx->ClearRenderTargetView(m_rtNormalsMSAA.m_pRtv, makergba(0.f));
 
-	if (g_temporalAA)
+	if (g_computeMSAA)
 	{
 		m_pCtx->ClearRenderTargetView(m_rtMotionVectorsMSAA.m_pRtv, makergba(0.f));
 		RenderTarget RTs[3] = { m_rtSceneMSAA, m_rtNormalsMSAA, m_rtMotionVectorsMSAA };
@@ -1949,7 +1946,7 @@ void VRWorksSample::RenderScene()
 		m_pCtx->OMSetBlendState(nullptr, nullptr, ~0u);
 	}
 
-	if (g_temporalAA)
+	if (g_computeMSAA)
 	{
 		PERF_SECTION(TemporalAA);
 
@@ -1968,7 +1965,6 @@ void VRWorksSample::RenderScene()
 		pSRVs[2] = m_rtScenePrev.m_pSrv;
 		m_pCtx->CSSetShaderResources(0, dim(pSRVs), pSRVs);
 
-		//m_pCtx->CSSetShader(m_pShaderState->m_pCsTemporalAA, nullptr, 0);
 		m_pCtx->CSSetShader(m_pShaderState->m_pCsMSAA, nullptr, 0);
 		m_pCtx->CSSetSamplers(0, 1, &m_pSsBilinearClamp);
 

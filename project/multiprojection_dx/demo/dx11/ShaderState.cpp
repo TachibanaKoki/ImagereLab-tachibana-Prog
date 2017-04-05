@@ -49,7 +49,7 @@ ShaderState::ShaderState(ShaderFactory* pFactory, Effect effect)
 
 	{
 		std::vector<shaderMacro> Macros;
-		Macros.push_back(shaderMacro{ "MOTION_VECTORS", booleanStrings[effect.temporalAA] });
+		Macros.push_back(shaderMacro{ "MOTION_VECTORS", booleanStrings[effect.computeMSAA] });
 		Macros.push_back(shaderMacro{ "NV_VR_PROJECTION", projectionStrings[effect.projection] });
 		Macros.push_back(shaderMacro{ "STEREO_MODE", stereoStrings[effect.stereoMode] });
 
@@ -124,22 +124,13 @@ ShaderState::ShaderState(ShaderFactory* pFactory, Effect effect)
 		}
 	}
 
-	if(effect.temporalAA)
+	if(effect.computeMSAA)
 	{
 		std::vector<shaderMacro> Macros;
 		Macros.push_back(shaderMacro{ "SAMPLE_COUNT", numberStrings[effect.msaaSampleCount] });
 		Macros.push_back(shaderMacro{ "NV_VR_PROJECTION", projectionStrings[int(effect.projection)] });
 
-		pFactory->CreateComputeShader("taa_cs", &Macros, &m_pCsTemporalAA);
-	}
-
-	if (effect.computeMSAA)
-	{
-		std::vector<shaderMacro> Macros;
-		Macros.push_back(shaderMacro{ "SAMPLE_COUNT", numberStrings[effect.msaaSampleCount] });
-		Macros.push_back(shaderMacro{ "NV_VR_PROJECTION", projectionStrings[int(effect.projection)] });
-
-		pFactory->CreateComputeShader("CompShader", &Macros, &m_pCsMSAA);
+		pFactory->CreateComputeShader("taa_cs", &Macros, &m_pCsMSAA);
 	}
 
 	pFactory->CreateVertexShader("world_vs", nullptr, &m_pVsShadow);

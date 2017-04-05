@@ -56,7 +56,7 @@ float3 shadingMSAA(float2 pixelPos) {
 		return shading(pixelPos * u_subsample);
 	}
 }
-[numthreads(16,16, 1)]
+[numthreads(8,8, 1)]
 void main(
 	in int2 i_threadIdx : SV_GroupThreadID,
 	in int2 i_globalIdx : SV_DispatchThreadID

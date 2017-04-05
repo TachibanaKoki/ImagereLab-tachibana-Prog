@@ -69,7 +69,6 @@ public:
 			unsigned int stereoMode : 2;
 			unsigned int featureLevel : 2;
 			unsigned int msaaSampleCount : 4;
-			unsigned int temporalAA : 1;
 			unsigned int computeMSAA : 1;
 		};
 
@@ -95,9 +94,7 @@ public:
 	comptr<ID3D11PixelShader>			m_pPsFlatten;
 	
 	// Compute Shaders
-	comptr<ID3D11ComputeShader>			m_pCsTemporalAA;
-	comptr<ID3D11ComputeShader>         m_pCsMSAA;
-
+	comptr<ID3D11ComputeShader>			m_pCsMSAA;
 	// Other stuff
 	comptr<ID3D11InputLayout>			m_pInputLayout;
 
