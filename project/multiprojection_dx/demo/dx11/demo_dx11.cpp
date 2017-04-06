@@ -1692,18 +1692,6 @@ void VRWorksSample::RenderScene()
 		RenderTarget tmp = m_rtScene;
 		m_rtScene = m_rtScenePrev;
 		m_rtScenePrev = tmp;
-
-		const float2 offsets[] = {
-			makefloat2(0.0625f, -0.1875f), makefloat2(-0.0625f, 0.1875f), makefloat2(0.3125f, 0.0625f), makefloat2(-0.1875f, -0.3125f),
-			makefloat2(-0.3125f, 0.3125f), makefloat2(-0.4375f, 0.0625f), makefloat2(0.1875f, 0.4375f), makefloat2(0.4375f, -0.4375f)
-		};
-
-		static int frameIndex = 0;
-		frameIndex++;
-		if (frameIndex >= dim(offsets))
-			frameIndex = 0;
-
-		taaViewportOffset = offsets[frameIndex];
 	}
 
 	#pragma region Shaders / state setup

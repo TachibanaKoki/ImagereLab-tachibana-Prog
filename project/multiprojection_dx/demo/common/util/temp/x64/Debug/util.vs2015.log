@@ -1,1 +1,11 @@
-﻿  util.vs2015.vcxproj -> C:\Users\kouki\Downloads\VRWorks_SDK_2.3_Public\multiprojection_dx\demo\common\util\temp\x64\Debug\util.lib
+﻿  test.cpp
+  util-affine.cpp
+  util-color.cpp
+  util-err.cpp
+  util-log.cpp
+  util-matrix.cpp
+  util-quat.cpp
+  util-rng.cpp
+  util-simd.cpp
+  util-basics.cpp
+  util.vs2015.vcxproj -> C:\Users\kouki\Documents\ImagereLab-tachibana-Prog\project\multiprojection_dx\demo\common\util\temp\x64\Debug\util.lib

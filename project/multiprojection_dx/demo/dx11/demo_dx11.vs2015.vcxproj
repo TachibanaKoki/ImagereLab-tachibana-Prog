@@ -45,6 +45,9 @@
     <ClCompile Include="ShaderState.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="shaders\CompShader.hlsl">
+      <FileType>Document</FileType>
+    </None>
     <None Include="..\..\lib\nv_vr.hlsli" />
     <None Include="..\..\lib\nv_vr_geometry_shader.hlsli" />
     <None Include="..\common\jsoncpp\lib_json\json_internalarray.inl" />

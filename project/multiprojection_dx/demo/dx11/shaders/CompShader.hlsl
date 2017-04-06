@@ -53,7 +53,7 @@ float3 shadingMSAA(float2 pixelPos) {
 		return shadingSSAA(pixelPos);
 	}
 	else {
-		return shading(pixelPos * u_subsample);
+		return shading(pixelPos * SUBSUMPLE);
 	}
 }
 [numthreads(8,8, 1)]

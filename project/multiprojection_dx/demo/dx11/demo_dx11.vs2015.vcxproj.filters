@@ -210,6 +210,9 @@
     <None Include="..\common\jsoncpp\lib_json\json_valueiterator.inl">
       <Filter>jsoncpp</Filter>
     </None>
+    <None Include="shaders\CompShader.hlsl">
+      <Filter>Shader Files\CS</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="demo_dx11.rc" />

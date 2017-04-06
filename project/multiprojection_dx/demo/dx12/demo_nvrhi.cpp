@@ -902,6 +902,7 @@ public:
         m_pqBlit = m_RendererInterface->createPerformanceQuery("Blit");
         m_pqSSAO = m_RendererInterface->createPerformanceQuery("SSAO");
         m_pqTemporalAA = m_RendererInterface->createPerformanceQuery("TemporalAA");
+		m_RendererInterface->createPerformanceQuery("CPAA");
         m_pqDrawSafeZone = m_RendererInterface->createPerformanceQuery("DrawSafeZone");
         m_pqFlattenImage = m_RendererInterface->createPerformanceQuery("FlattenImage");
 	}

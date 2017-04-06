@@ -164,6 +164,7 @@ ShaderState::ShaderState(ShaderFactory* pFactory, NVRHI::IRendererInterface*  pR
 		pFactory->CreateShader("taa_cs", &Macros, NVRHI::ShaderType::SHADER_COMPUTE, &m_pCsTemporalAA);
 	}
 
+
 	pFactory->CreateShader("world_vs", nullptr, NVRHI::ShaderType::SHADER_VERTEX, &m_pVsShadow);
 
 	{
@@ -241,6 +242,7 @@ ShaderState::~ShaderState()
 	m_pRenderer->destroyShader(m_pPsLines)
 		;
 	m_pRenderer->destroyShader(m_pCsTemporalAA);
+	m_pRenderer->destroyShader(m_pCsMSAA);
 
 	m_pRenderer->destroyInputLayout(m_pInputLayout);
 	m_pRenderer->destroyInputLayout(m_pInputLayoutLines);

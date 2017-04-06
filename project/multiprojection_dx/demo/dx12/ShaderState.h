@@ -105,6 +105,7 @@ public:
 
 	// Compute Shaders
 	NVRHI::ShaderHandle			m_pCsTemporalAA;
+	NVRHI::ShaderHandle			m_pCsMSAA;
 
 	// Other stuff
 	NVRHI::InputLayoutHandle	m_pInputLayout;
